@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="css/sample.css">
+    <title>じゃんけん</title>
+</head>
+<!-- 作業手順
+① ユーザーがぐーちょきぱーきぱーのいずれかを選ぶと(If分岐)、コンピューターの出す手が自動的に出てくる(乱数で選ばれる)ようにする
+結果起こしたいこと：ユーザーがぐーちょきぱーのボタンを押したら、勝敗が出る
+-->
+
+
+<body>
+
+    <header>
+        <h1>じゃんけん</h1>
+    </header>
+
+    <main>
+    
+        <ul>
+            <li id="gu_btn">グー</li>
+            <li id="cho_btn">チョキ</li>
+            <li id="par_btn">パー</li>
+        </ul>
+    
+
+        <div>コンピュータの出した手は？「<span id="pc_hands">なに？</span>」</div>
+        <div id="judgment">勝ち</div>
+        
+    </main>
+
+    <footer></footer>
+   
+  
+
+    <script>
+        // ユーザーがグーボタンを押すと…
+        $("#gu_btn").on("click", function() {
+            const playerHand = 'グー';
+            const r = Math.ceil(Math.random() * 3);
+            
+        // Computer handをグーチョキパーのいずれかに設定する
+            let computerHand = '';
+            if (r == 1) {
+                computerHand = 'グー';
+            } else if (r == 2) {
+                computerHand = 'チョキ';
+            } else {
+                computerHand = 'パー';
+            }
+        // Computer handの表示を上記の通り変更反映させる
+            $("#pc_hands").html(computerHand);
+
+        // 勝敗を決める
+            let result = '';
+            if (computerHand === playerHand) {
+                result = 'あいこ';
+            } else if (computerHand === 'チョキ') {
+                result = '勝ち';
+            } else {
+                result = '負け';
+            }
+            $("#judgment").html(result);
+        });
+
+ // ユーザーがチョキボタンを押すと…
+ $("#cho_btn").on("click", function() {
+            const playerHand = 'チョキ';
+            const r = Math.ceil(Math.random() * 3);
+            
+        // Computer handをグーチョキパーのいずれかに設定する
+            let computerHand = '';
+            if (r == 1) {
+                computerHand = 'グー';
+            } else if (r == 2) {
+                computerHand = 'チョキ';
+            } else {
+                computerHand = 'パー';
+            }
+        // Computer handの表示を上記の通り変更反映させる
+            $("#pc_hands").html(computerHand);
+
+        // 勝敗を決める
+            let result = '';
+            if (computerHand === playerHand) {
+                result = 'あいこ';
+            } else if (computerHand === 'パー') {
+                result = '勝ち';
+            } else {
+                result = '負け';
+            }
+            $("#judgment").html(result);
+        });
+
+// ユーザーがパーボタンを押すと…
+ $("#par_btn").on("click", function() {
+            const playerHand = 'パー';
+            const r = Math.ceil(Math.random() * 3);
+            
+        // Computer handをグーチョキパーのいずれかに設定する
+            let computerHand = '';
+            if (r == 1) {
+                computerHand = 'グー';
+            } else if (r == 2) {
+                computerHand = 'チョキ';
+            } else {
+                computerHand = 'パー';
+            }
+        // Computer handの表示を上記の通り変更反映させる
+            $("#pc_hands").html(computerHand);
+
+        // 勝敗を決める
+            let result = '';
+            if (computerHand === playerHand) {
+                result = 'あいこ';
+            } else if (computerHand === 'グー') {
+                result = '勝ち';
+            } else {
+                result = '負け';
+            }
+            $("#judgment").html(result);
+        });
+
+    </script>
+</body>
+
+</html>
